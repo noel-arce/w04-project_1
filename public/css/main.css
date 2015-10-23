@@ -1,3 +1,49 @@
-#page-wrapper {
-	background-color: lightblue;
+h1 {
+	text-align: center;
+}
+
+h3 {
+	text-align: center;
+}
+
+h5 {
+	text-align: center;
+}
+
+p {
+	text-align: center;
+}
+
+#west-coast {
+	border-radius: 0px;
+	margin-right: 5px;
+}
+
+#mid-west {
+	border-radius: 0px;
+	margin: 0px 5px;
+}
+
+#east-coast {
+	border-radius: 0px;
+	margin-left: 5px;
+}
+
+#post{
+	border-radius: 0px;
+}
+
+#add {
+	border-radius: 0px;
+}
+
+#save {
+	margin: 0 auto;
+	padding: 5px 50px;
+  display: block;
+  border-radius: 0px;
+}
+
+#cities {
+	background-color: gray;
 }

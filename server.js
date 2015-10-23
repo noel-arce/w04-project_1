@@ -18,6 +18,5 @@ app.get('/', function(req, res) {
 });
 
 app.listen(3000, function() {
-  console.log("express-heroku-starter is running on port 3000");
+  console.log("Project 1 running on port 3000");
 });
-

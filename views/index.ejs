@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Express - Heroku Starter Project</title>
+  <title>Project 1</title>
   <meta charset="utf-8" />
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,25 +16,102 @@
   <script src="/js/app.js"></script>
 </head>
 <body>
-
-  <div id="page-wrapper" class="container">
-    <header class="page-header">
-      <h1>This is the Title</h1>
-    </header>
-    
-    <!-- This is the bs3-form boilerplate: -->
-    <form action="" method="POST" role="form">
-      <legend>Form title</legend>
-    
-      <div class="form-group">
-        <label for="">label</label>
-        <input type="text" class="form-control" id="" placeholder="Input field">
-      </div>
-    
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-
+  
+  <div class='jumbotron'>
+    <div class='container'>
+      <h1>TITLE</h1>
+      <h3>CAPTION</h3>
+    </div>
   </div>
+
+  <div>
+    <h5>CHOOSE YOUR CITY</h5>
+  </div>
+
+  <br>
+
+  <div class='wrapper text-center'>
+    <div class='btn-group' role='group' aria-label='...'>
+      <button type='button' class='btn btn-default' id='west-coast'>San Francisco</button>
+      <button type='button' class='btn btn-default' id='mid-west'>Chicago</button>
+      <button type='button' class='btn btn-default' id='east-coast'>New York</button>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm-8 col-sm-offset-2'>
+        <form class='trip-idea'>
+          <div class='input-group'>
+            <input type='text' class='form-control' id='post' placeholder='Event, Restaurant, Moment...'>
+            <span class='input-group-btn'>
+              <button class='btn btn-default' id='add' type='submit'>Add</button>
+            </span>
+          </div>
+        </form>
+        <br>
+        <ul class='list-group' id='itinerary'>
+        </ul>
+        <br>
+        <button class='btn btn-default' id='save' type='button'>Save</button>
+      </div>    
+    </div>
+  </div>
+
+  <br>
+
+  <div class='container'>
+    <div class='row' id='cities'>
+
+      <div class='col-xs-4'>
+        <h3>San Francisco</h3>
+        <ul class='list-group' id='SanFrancisco'>
+          
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/350x150" alt="...">
+          </a>
+
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/350x150" alt="...">
+          </a>
+
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/350x150" alt="...">
+          </a>
+
+        </ul>
+      </div>
+
+      <div class='col-xs-4'>
+        <h3>Chicago</h3>
+        <ul class='list-group' id='Chicago'>
+
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/350x150" alt="...">
+          </a>
+
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/350x150" alt="...">
+          </a>
+
+        </ul>
+      </div>
+
+      <div class='col-xs-4'>
+        <h3>New York</h3>
+        <ul class='list-group' id='NewYork'>
+          <a href="#" class="thumbnail">
+            <img src="http://placehold.it/350x150" alt="...">
+          </a>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 </html>
 
