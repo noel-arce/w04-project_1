@@ -8,7 +8,6 @@ var mongoose = require("mongoose");
 var db = require("./models/index");
 
 app.set("view engine", "ejs");
-
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
