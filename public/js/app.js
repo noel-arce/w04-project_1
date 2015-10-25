@@ -2,26 +2,32 @@
 // On page load
 $(document).ready(function(){
   console.log('JS ready to GO!');
-
-  //set class='san francisco' to list
+  var city;
+  //set class='san francisco' to list - SERVER ROUTE NEEDED?
   $('#west-coast').on('click', function (e) {
     e.preventDefault();
-    console.log('city set to San Francisco');
+
+    city = 'golden';
+    console.log('city set to ' + city);
   });
 
-  //set class='chicago' to list
+  //set class='chicago' to list - SERVER ROUTE NEEDED?
   $('#mid-west').on('click', function (e) {
     e.preventDefault();
-    console.log('city set to Chicago');
+
+    city = 'windy';
+    console.log('city set to ' + city);
   });
 
-  //set class='new york' to list
+  //set class='new york' to list - SERVER ROUTE NEEDED?
   $('#east-coast').on('click', function (e) {
     e.preventDefault();
-    console.log('city set to New York');
+
+    city = 'bigApple';
+    console.log('city set to ' + city);
   });
 
-  //click-handler for post-form to make list
+  //click-handler for post-form to make list - SERVER ROUTE NEEDED
   $('.postIdea').on('submit', function (e) {
   	e.preventDefault();
   	console.log('idea was added to list');
@@ -34,7 +40,7 @@ $(document).ready(function(){
   	}
   });
 
-  //click handler for delete list-item
+  //click handler for delete list-item - SERVER ROUTE NEEDED?
   $('.itinerary').on('click', '.glyphicon-remove', function (e) {
     e.preventDefault();
     var deletedPost = $(this).closest('li');
@@ -43,7 +49,7 @@ $(document).ready(function(){
     console.log('item removed');
   });
 
-  //click handler for save button - save to database and render to Past Plans
+  //*******click handler for save button - save to database and render to Past Plans - SERVER ROUTE NEEDED
   $('#save').on('click', function (e) {
     e.preventDefault();
     //console.log('itinerary saved to database');
@@ -52,10 +58,15 @@ $(document).ready(function(){
       var title = $('#title').val();
       var newModal = '<a type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">' + title +
          '</a>';
-      //console.log(title);
+      //console.log(title)
+      if (city == 'golden') {
+        $('#SF').prepend(newModal);
+      }else if (city == 'windy') {
+        $('#Chitown').prepend(newModal);
+      }else if (city == 'bigApple') {
+        $('#NY').prepend(newModal);
+      }
+    }$('#title').val('');
 
-      $('#SF').prepend(newModal);
-    }
   });
-
 });
