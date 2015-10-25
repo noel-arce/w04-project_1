@@ -16,7 +16,7 @@
   <script src="/js/app.js"></script>
 </head>
 <body>
-  
+  <!-- JUMBOTRON -->
   <div class='jumbotron'>
     <div class='container'>
       <h1>TITLE</h1>
@@ -24,12 +24,11 @@
     </div>
   </div>
 
+  <!-- SELECT CITY -->
   <div>
     <h5>CHOOSE YOUR CITY</h5>
   </div>
-
   <br>
-
   <div class='wrapper text-center'>
     <div class='btn-group' role='group' aria-label='...'>
       <button type='button' class='btn btn-default' id='west-coast'>San Francisco</button>
@@ -39,14 +38,18 @@
   </div>
 
   <br>
-  <br>
 
   <div class='container'>
     <div class='row'>
       <div class='col-sm-8 col-sm-offset-2'>
-        <form class='trip-idea'>
+        <!-- TITLE -->
+        <input type='text' class='form-control' id='title' placeholder='Title...'>
+
+        <br>
+        <!-- POSTS -->
+        <form class='postIdea'>
           <div class='input-group'>
-            <input type='text' class='form-control' id='post' placeholder='Event, Restaurant, Moment...'>
+            <input type='text' class='form-control' id='post' placeholder='Event, Restaurant, Activity...'>
             <span class='input-group-btn'>
               <button class='btn btn-default' id='add' type='submit'>Add</button>
             </span>
@@ -55,11 +58,12 @@
         
         <br>
         
-        <ul class='list-group' id='itinerary'>
-        </ul>
+        <!-- ITINERARY LIST -->
+        <ul class='itinerary list-group'></ul>
         
         <br>
         
+        <!-- SAVE BUTTON -->
         <button class='btn btn-default' id='save' type='button'>Save</button>
       </div>    
     </div>
@@ -67,42 +71,55 @@
 
   <br>
 
-  <div class='container'>
-    <div class='row' id='cities'>
-
-      <div class='col-xs-4'>
+  <div class='container' id='cities'>
+    <div class='row'>
+      <!-- SAN FRANCISCO COLUMN -->
+      <div class='col-xs-4' id='SF'>
         <h3>San Francisco</h3>
-        <ul class='list-group' id='SanFrancisco'>
-          
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/350x150" alt="...">
-          </a>
 
-        </ul>
+        <a type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
+          Best Summer Restaurants and Places to Meet People and Bars and Nightclubs
+        </a>
       </div>
 
-      <div class='col-xs-4'>
+      <!-- CHICAGO COLUMN -->
+      <div class='col-xs-4' id='Chitown'>
         <h3>Chicago</h3>
-        <ul class='list-group' id='Chicago'>
-          
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/350x150" alt="...">
-          </a>
-
-        </ul>
+        
+        <a type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
+          Best Summer Restaurants and Places to Meet People and Bars and Nightclubs
+        </a>
       </div>
 
-      <div class='col-xs-4'>
+      <!-- NEW YORK COLUMN -->
+      <div class='col-xs-4' id='NY'>
         <h3>New York</h3>
-        <ul class='list-group' id='NewYork'>
 
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/350x150" alt="...">
-          </a>
-          
-        </ul>
+        <a type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
+          Best Summer Restaurants and Places to Meet People and Bars and Nightclubs
+        </a>
       </div>
 
+    </div>
+  </div>
+
+<!-- MODAL CONTENT -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+          <h4 class="modal-title" id="myModalLabel">Best Summer Restaurants and Places to Meet People and Bars and Nightclubs</h4>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>Test 1</li>
+            <li>Test 2</li>
+            <li>Test 3</li>
+            <li>Test 4</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 

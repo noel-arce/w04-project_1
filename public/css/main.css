@@ -14,6 +14,10 @@ p {
 	text-align: center;
 }
 
+#cities {
+	background-color: gray;
+}
+
 #west-coast {
 	border-radius: 0px;
 	margin-right: 5px;
@@ -29,6 +33,10 @@ p {
 	margin-left: 5px;
 }
 
+#title {
+	border-radius: 0px;
+}
+
 #post{
 	border-radius: 0px;
 }
@@ -37,9 +45,39 @@ p {
 	border-radius: 0px;
 }
 
+.glyphicon {
+	float: right;
+}
+
 #save {
 	margin: 0 auto;
 	padding: 5px 50px;
   display: block;
   border-radius: 0px;
+}
+
+#SF {
+	color: white;
+}
+
+#Chitown {
+	color: white;
+}
+
+#NY {
+	color: white;
+}
+
+.btn-lg {
+	border: solid;
+	border-radius: 0px;
+	color: white;
+	padding: 25px;
+	margin: 20px auto;
+	display: block;
+	white-space: normal !important;
+}
+
+ul {
+	list-style-type: none;
 }
