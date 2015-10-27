@@ -34,19 +34,32 @@
 		  	<%= trip.city  %>
 		  </div>
 		 </div>
-		
+		<br>
 		<div class='row'>	
 			<div class='col-sm-6'>
 				<%= trip.title %>
 			</div>
 		</div>
-
+		<br>
 		<div class='row'>
 			<div class='col-sm-6'>
-				<textarea name="desc" class='form-control' rows=15 id="" placeholder='Brief Description...'></textarea>
-				<button class="btn btn-default pull-right" type="submit">Save</button>
+				<%= trip.desc %>
 			</div>
 		</div>
+		<form class='trip-item'>
+			<div class="input-group">
+	      <input type="text" class="form-control" id='item' placeholder="Search for...">
+	      <span class="input-group-btn">
+	        <button class="btn btn-default" type="submit">Add</button>
+	      </span>
+	    </div>
+    </form>
+    <button class="btn btn-default" type='button'>Save</button>
+		<form class='trip-list'>
+			<ul>
+				<!-- LIST ITEM PREPENDED INTO HERE -->
+			</ul>
+		</form>
 	</div>
 
 </body>

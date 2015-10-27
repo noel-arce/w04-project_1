@@ -3,7 +3,7 @@
 $(document).ready(function(){
   console.log('JS ready to GO!');
 
-  //TRIP CREATE
+  //CREATE NEW TRIP
   $('#new-trip').on('submit', function (e) {
     e.preventDefault();
 
@@ -16,6 +16,19 @@ $(document).ready(function(){
       })
       .error(function (data) {
       });
+  });
+
+  //PREPEND ITEM TO TRIP LIST
+  $('.trip-item').on('submit', function (e) {
+    e.preventDefault();
+    console.log('item was added');
+
+    if ($('#item').val().trim().length > 0) {
+      var itemContent = $('#item').val();
+      var newItem = '<li class="list-group-item">' + itemContent + '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' + '</li>';
+      $('.trip-list').prepend(newItem);
+      $('#item').val('');
+    }
   });
 
 });

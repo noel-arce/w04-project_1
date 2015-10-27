@@ -36,7 +36,7 @@ app.get('/trips/:id', function (req, res) {
 //TRIP CREATE [x]
 app.post('/trips', function (req, res) {
 	var trip = req.body;
-
+	//console.log(trip);
 	db.Trip.create(trip, function (err, trip){
 		if (err) {
 			res.send(403, err);
