@@ -17,6 +17,18 @@
 </head>
 
 <body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          Coast-to-Coast
+        </a>
+      </div>
+      <button class='navbar-btn btn btn-defult' data-toggle="modal" data-target="#new-trip-modal">New Trip</button>
+    </div>
+  </nav>
+
   <!-- JUMBOTRON -->
   <div class='jumbotron'>
     <div class='container'>
@@ -25,104 +37,36 @@
     </div>
   </div>
 
-  <!-- SELECT CITY -->
-  <div>
-    <h5>CHOOSE YOUR CITY</h5>
-  </div>
-
-  <br>
-  
-  <div class='wrapper text-center'>
-    <div class='btn-group' role='group' aria-label='...'>
-      <button type='button' class='btn btn-default' id='west-coast'>San Francisco</button>
-      <button type='button' class='btn btn-default' id='mid-west'>Chicago</button>
-      <button type='button' class='btn btn-default' id='east-coast'>New York</button>
-    </div>
-  </div>
-
-  <br>
-
-  <div class='container'>
-    <div class='row'>
-      <div class='col-sm-8 col-sm-offset-2'>
-        <!-- TITLE -->
-        <input type='text' class='form-control' id='title' placeholder='Title...'>
-
-        <br>
-        <!-- POST INPUT -->
-        <form class='postIdea'>
-          <div class='input-group'>
-            <input type='text' class='form-control' id='post' placeholder='Event, Restaurant, Activity...'>
-            <span class='input-group-btn'>
-              <button class='btn btn-default' id='add' type='submit'>Add</button>
-            </span>
-          </div>
-        </form>
-        
-        <br>
-        
-        <!-- POST LIST -->
-        <ul class='itinerary list-group'>
-        </ul>
-        
-        <!-- SAVE BUTTON -->
-        <button class='btn btn-default' id='save' type='button'>Save</button>
-      </div>    
-    </div>
-  </div>
-
-  <br>
-
-  <!-- CITY COLUMN LABELS -->
-  <div class='container' id='cities'>
-    <div class='row'>
-      <div class='col-xs-4'><h3>San Francisco</h3></div>
-      <div class='col-xs-4'><h3>Chicago</h3></div>
-      <div class='col-xs-4'><h3>New York</h3></div>
-    </div>
-  </div>
-
-  <div class='container' id='city-posts'>
-    <div class='row'>
-      <!-- SAN FRANCISCO COLUMN -->
-      <div class='col-xs-4' id='SF'>
-        <a type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
-          Best Summer Restaurants and Places to Meet People and Bars and Nightclubs
+  <% for (var i = trips.length-1; i >= 0; i--) { %>
+    <div class="col-sm-3">
+      <div class="thumbnail">
+        <a class='trip-button' href='/trips/<%= trips[i]._id %>' >
+          <%= trips[i].city %>
+          <div><%= trips[i].title %></div>
         </a>
       </div>
-
-      <!-- CHICAGO COLUMN -->
-      <div class='col-xs-4' id='Chitown'> 
-        <a type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
-          Best Summer Restaurants and Places to Meet People and Bars and Nightclubs
-        </a>
-      </div>
-
-      <!-- NEW YORK COLUMN -->
-      <div class='col-xs-4' id='NY'>
-        <a type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
-          Best Summer Restaurants and Places to Meet People and Bars and Nightclubs
-        </a>
-      </div>
-
     </div>
-  </div>
+  <% } %>
 
-<!-- MODAL CONTENT -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <!-- MODAL CONTENT -->
+  <div class="modal fade" id="new-trip-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
-          <h4 class="modal-title" id="myModalLabel">Best Summer Restaurants and Places to Meet People and Bars and Nightclubs</h4>
+          <h4 class="modal-title" id="myModalLabel">Share a New Trip Plan</h4>
         </div>
         <div class="modal-body">
-          <ul>
-            <li>Test 1</li>
-            <li>Test 2</li>
-            <li>Test 3</li>
-            <li>Test 4</li>
-          </ul>
+          <form action="" id='new-trip'>
+            <!--  <select name="city" class='form-control' id="">
+               <option value="Chicago">Chicago</option>
+               <option value="San Francisco">San Francisco</option>
+               <option value="New York City">New York City</option>
+             </select> -->
+            <input type="text" name='city' class='form-control' placeholder='Your Favorite City'>
+            <input type="text" name='title' class='form-control' placeholder='Title...'>
+            <!-- <textarea name="desc" class='form-control' id="" placeholder='Brief Description...'></textarea> -->
+            <button type='submit'>Submit</button>
+          </form>
         </div>
       </div>
     </div>
@@ -130,5 +74,3 @@
 
 </body>
 </html>
-
-
