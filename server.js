@@ -32,7 +32,6 @@ app.get('/trips/:id', function (req, res) {
 	});
 });
 
-
 //TRIP CREATE [x]
 app.post('/trips', function (req, res) {
 	var trip = req.body;
@@ -44,6 +43,12 @@ app.post('/trips', function (req, res) {
 			res.send(201, trip);
 		}
 	});
+});
+
+app.post('/deadpoint', function(req, res) {
+	console.log(req.body);
+	res.json(req.body);
+
 });
 
 //TRIP UPDATE

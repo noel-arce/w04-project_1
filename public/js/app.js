@@ -26,9 +26,23 @@ $(document).ready(function(){
     if ($('#item').val().trim().length > 0) {
       var itemContent = $('#item').val();
       var newItem = '<li class="list-group-item">' + itemContent + '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' + '</li>';
-      $('.trip-list').prepend(newItem);
+      $('.trip-list').append(newItem);
       $('#item').val('');
     }
+  });
+
+  //CREATE ACTIVITY IN TRIP BY ID
+  $('.trip-list').on('click', function (e) {
+    e.preventDefault();
+
+    var tripItems = $('form.trip-list li');
+    var list = [];
+
+    tripItems.each(function() { 
+      list.push($(this).text());
+    });
+    console.log(list);
+
   });
 
 });
