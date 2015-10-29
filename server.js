@@ -24,15 +24,15 @@ app.get('/', function (req, res) {
 	});
 });
 
-//TRIP SHOW [x]
+//SHOW ONE TRIP [x]
 app.get('/trips/:id', function (req, res) {
 	// console.log(req);
-	db.Trip.findById(req.params.id, function (err, trip) {
+	db.Trip.findById(req.params.id).populate('activities').exec(function (err, trip) {
 		res.render('trip-show', {trip: trip});
 	});
 });
 
-//TRIP CREATE [x]
+//CREATE TRIP [x]
 app.post('/trips', function (req, res) {
 	var trip = req.body;
 	//console.log(trip);
@@ -45,14 +45,54 @@ app.post('/trips', function (req, res) {
 	});
 });
 
-app.post('/deadpoint', function(req, res) {
-	console.log(req.body);
-	res.json(req.body);
+//CREATE ACTIVITY TO TRIP
+app.post('/trips/:id/activities', function (req, res) {
+	var activity = req.body;
+	//console.log(trip);
+	db.Trip.findById(req.params.id, function (err, trip) {
+		db.Activity.create(activity, function (err, activity){
+			if (err) {
+				res.json({err: err});
+			} else {
+				trip.activities.push(activity._id);
+				trip.save();
+				res.status(201).json(activity);
+			}
+		});
+	});
+});
 
+//DELETE TRIP [x]
+app.delete('/trips/:id', function (req, res) {
+	db.Trip.remove({_id: req.params.id}, function (err) {
+		if (err) {
+			console.log(err);
+		} else {
+			res.status(200).json("deleted");
+		}
+	});
 });
 
 //TRIP UPDATE
-//TRIP DELETE
+// app.put('/trips/:id', function (req, res) {
+// 	db.Trip.findById(req.params.id, function (err, trip) {
+// 		res.send('Got a PUT request at /user');
+// 	});
+// });
+
+//CREATE DESCRIPTION FOR TRIP
+// app.post('/api/trips/:tripId/desc', function(req, res) { //fix the path
+// 	var tripId = req.params.tripId;
+// 	var newDesc = new Desc(req.body.desc);
+
+// 	Trip.findOne({_id: tripId}, function (err, foundTrip) {
+//     foundTrip.desc.push(newDesc);
+//     foundTrip.save(function (err, savedTrip) {
+//       res.json(newDesc);
+//     });
+//   });
+		
+// });
 
 app.listen(app.listen(process.env.PORT || 3000)
 );

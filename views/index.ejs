@@ -21,7 +21,7 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
           Coast-to-Coast
         </a>
       </div>
@@ -38,12 +38,15 @@
   </div>
 
   <% for (var i = trips.length-1; i >= 0; i--) { %>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <div class="thumbnail">
-        <a class='trip-button' href='/trips/<%= trips[i]._id %>' >
-          <%= trips[i].city %>
-          <div><%= trips[i].title %></div>
-        </a>
+        <!-- <img src='http://placehold.it/200x100'> -->
+        <div class='caption'>
+          <a class='trip-button' href='/trips/<%= trips[i]._id %>' >
+            <%= trips[i].city %>
+            <div><%= trips[i].title %></div>
+          </a>
+        </div>
       </div>
     </div>
   <% } %>
@@ -57,16 +60,11 @@
         </div>
         <div class="modal-body">
           <form action="" id='new-trip'>
-            <!--  <select name="city" class='form-control' id="">
-               <option value="Chicago">Chicago</option>
-               <option value="San Francisco">San Francisco</option>
-               <option value="New York City">New York City</option>
-             </select> -->
             <input type="text" name='city' class='form-control' placeholder='Your Favorite City'>
             <br>
             <input type="text" name='title' class='form-control' placeholder='Title...'>
             <br>
-            <textarea name="desc" class='form-control' id="" rows=5 placeholder='Description...'></textarea>
+            <textarea name="details" class='form-control' id="" rows=5 placeholder='Description...'></textarea>
             <button type='submit'>Submit</button>
           </form>
         </div>
