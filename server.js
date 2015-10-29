@@ -5,20 +5,28 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var session = require('express-session');
 var db = require("./models/index");
 
+// MIDDLEWARE
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(session({
+	saveUninitialized: true,
+	resave: true,
+	secret: "superSecretCookie",
+	cookie: {maxAge: 600000}
+}));
 
-//TRIP INDEX [x]
+// TRIP INDEX [x]
 app.get('/', function (req, res) {
 	db.Trip.find().exec(function(err, trips) {
   	res.render("index", {trips: trips});
 	});
 });
 
-//SHOW ONE TRIP [x]
+// SHOW ONE TRIP [x]
 app.get('/trips/:id', function (req, res) {
 	// console.log(req);
 	db.Trip.findById(req.params.id).populate('activities').exec(function (err, trip) {
@@ -26,7 +34,7 @@ app.get('/trips/:id', function (req, res) {
 	});
 });
 
-//CREATE TRIP [x]
+// CREATE TRIP [x]
 app.post('/trips', function (req, res) {
 	var trip = req.body;
 	//console.log(trip);
@@ -68,9 +76,26 @@ app.delete('/trips/:id', function (req, res) {
 });
 
 //SHOW SIGNUP
-// app.get('/signup', function (req, res) {
-// 	res.render('signup');
-// });
+app.get('/signup', function (req, res) {
+	res.render('signup');
+});
+
+// CREATE NEW USER
+app.post('/users', function (req, res) {
+	var user = req.body;
+	console.log(user);
+		db.User.createSecure(user.email, user.password, function (err, user) {
+			res.json({user: user, msg: "john is the best"});
+			// req.session.userId = user._id;
+			// req.session.user = user;
+		
+	// 	if (err) {
+	// 		console.log(err);
+	// 	} else {
+	// 		res.json(user);
+	// 	}
+	});
+});
 
 //SHOW LOGIN
 // app.get('/login', function (req, res) {

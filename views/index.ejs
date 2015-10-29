@@ -23,11 +23,11 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">
-          Coast-to-Coast
+          C2C
         </a>
       </div>
-      <button class='navbar-btn btn btn-defult' data-toggle="modal" data-target="#new-trip-modal">New Trip</button>
-      <!-- <ul class="nav navbar-nav navbar-right">
+      <button class='navbar-btn btn btn-defult pull-right' data-toggle="modal" data-target="#new-trip-modal">New Trip</button>
+      <ul class="nav navbar-nav navbar-right">
         <li><a href="/signup">Sign Up</a></li>
         <li><a href="/login">Login</a></li>
         <li class="dropdown">
@@ -40,26 +40,25 @@
             <li><a href="#">Logout</a></li>
           </ul>
         </li>
-      </ul> -->
+      </ul>
     </div>
   </nav>
 
   <!-- JUMBOTRON -->
   <div class='jumbotron'>
     <div class='container'>
-      <h1>TITLE</h1>
-      <h3>CAPTION</h3>
+      <h1>Coast-to-Coast</h1>
+      <h3></h3>
     </div>
   </div>
 
   <% for (var i = trips.length-1; i >= 0; i--) { %>
     <div class="col-sm-3">
       <div class="thumbnail">
-        <!-- <img src='http://placehold.it/200x100'> -->
         <div class='caption'>
           <a class='trip-button' href='/trips/<%= trips[i]._id %>' >
             <img src="<%= trips[i].imgUrl %>">
-            <%= trips[i].city %>
+            <div><%= trips[i].city %></div>
             <div><%= trips[i].title %></div>
           </a>
         </div>

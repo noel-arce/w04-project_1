@@ -16,3 +16,4 @@ db.once('open', function (callbackk) {
 
 module.exports.Trip = require('./trip.js');
 module.exports.Activity = require('./activity.js');
+module.exports.User = require('./user.js');

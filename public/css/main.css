@@ -1,3 +1,32 @@
-.thumbnail {
+
+.navbar {
+	margin: 0px;
+}
+
+.navbar-brand {
+	border-style: solid;
+	margin: 8px;
+	margin-left: -5px !important;
+	padding: 10px;
+}
+
+.navbar-btn {
+	border-radius: 1px;
+	margin-top: 15px;
+}
+
+.jumbotron {
 	text-align: center;
+	padding: 55px;
+	margin-bottom: 15px;
+}
+
+.thumbnail {
+	text-align: left;
+	border-radius: 1px;
+	margin-bottom: 15px;
+}
+
+.thumbnail .caption {
+	padding: 1px;
 }
