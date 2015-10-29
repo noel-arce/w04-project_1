@@ -1,3 +1,4 @@
+APP.JS
 //code to work on creating todo list and save
 $('.trip-details').on('click', function (e) {
   e.preventDefault();
@@ -19,7 +20,7 @@ $('.trip-details').on('click', function (e) {
     });
 
 
-
+EJS
   <!-- SELECT CITY -->
   <div>
     <h5>CHOOSE YOUR CITY</h5>
