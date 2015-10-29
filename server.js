@@ -7,12 +7,6 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var db = require("./models/index");
 
-mongoose.connect(
-  process.env.MONGOLAB_URI ||
-  process.env.MONGOHQ_URL ||
-  'mongodb://localhost/my_heroku_app' // plug in the db name you've been using
-);
-
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));

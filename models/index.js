@@ -1,5 +1,9 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/coast-to-coast");
+mongoose.connect(
+  process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost/coast-to-coast' // plug in the db name you've been using
+);
 
 // After creating a new model, require and export it:
 // module.exports.Tweet = require("./tweet.js");
