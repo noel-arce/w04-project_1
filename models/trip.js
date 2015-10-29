@@ -5,6 +5,7 @@ var TripSchema = new Schema ({
 	city: String,
 	title: String,
 	details: String,
+	imgUrl: String,
 	activities: [{type: Schema.Types.ObjectId, ref: 'Activity'}]
 });
 

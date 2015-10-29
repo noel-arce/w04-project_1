@@ -34,6 +34,7 @@ $(document).ready(function(){
             var newActivity = '<li>' + actTitle + '<div>' + actDesc + '</div>' + '<div>' + actLocation + '</div>' + '</li>';
             
             $('#activity').append(newActivity);
+            $("#new-activity")[0].reset();
           }
         });
   });

@@ -45,7 +45,7 @@ app.post('/trips', function (req, res) {
 	});
 });
 
-//CREATE ACTIVITY TO TRIP
+//CREATE ACTIVITY TO TRIP [x]
 app.post('/trips/:id/activities', function (req, res) {
 	var activity = req.body;
 	//console.log(trip);
@@ -72,6 +72,16 @@ app.delete('/trips/:id', function (req, res) {
 		}
 	});
 });
+
+//SHOW SIGNUP
+// app.get('/signup', function (req, res) {
+// 	res.render('signup');
+// });
+
+//SHOW LOGIN
+// app.get('/login', function (req, res) {
+// 	res.render('login');
+// });
 
 //TRIP UPDATE
 // app.put('/trips/:id', function (req, res) {
