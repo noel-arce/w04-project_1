@@ -19,16 +19,18 @@
 
 .jumbotron {
 	font-family: 'Poiret One', cursive;
-	text-align: right;
 	color: white;
-	padding: 55px;
+	padding: 150px;
 	margin-bottom: 15px;
-	background: url('/images/Seattle.Center.Night_.Space_.Needle.Fog_.eng-0008.jpg');
+	background: url('/images/nVoKFEq.jpg');
 	background-size: cover;
+	background-repeat: no-repeat;
+	height: 450px;
 }
 
 .jumbotron h1 {
-	font-size: 45px;
+	font-size: 70px;
+	text-align: right;
 }
 
 .thumbnail {
@@ -45,6 +47,15 @@
 
 .text-muted {
 	margin-bottom: 20px;
+}
+
+#list {
+	margin-top: 95px;
+	padding-left: 38px;
+}
+
+#act-title {
+	font-size: 18px;
 }
 
 li {
