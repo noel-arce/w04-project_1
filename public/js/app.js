@@ -31,7 +31,7 @@ $(document).ready(function(){
             var actTitle = data.title;
             var actDetails = data.details;
             // var actLocation = data.location;
-            var newActivity = '<li><h5>' + actTitle + '</h5>' + actDetails + '</li>' + '<br>';
+            var newActivity = '<li><h5 id="act-title">' + actTitle + '</h5>' + actDetails + '</li>' + '<br>';
             
             $('#activity').append(newActivity);
             $("#new-activity")[0].reset();
