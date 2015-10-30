@@ -3,8 +3,7 @@ var Schema = mongoose.Schema;
 
 var ActivitySchema = new Schema ({
 	title: String,
-	desc: String,
-	location: String
+	details: String
 });
 
 var Activity = mongoose.model('Activity', ActivitySchema);

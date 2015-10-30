@@ -29,9 +29,9 @@ $(document).ready(function(){
 
           } else {
             var actTitle = data.title;
-            var actDesc = data.desc;
-            var actLocation = data.location;
-            var newActivity = '<li>' + actTitle + '<div>' + actDesc + '</div>' + '<div>' + actLocation + '</div>' + '</li>';
+            var actDetails = data.details;
+            // var actLocation = data.location;
+            var newActivity = '<li>' + actTitle + '<br>' + actDetails + '</li>' + '<br>';
             
             $('#activity').append(newActivity);
             $("#new-activity")[0].reset();

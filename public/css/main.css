@@ -1,6 +1,7 @@
-
 .navbar {
+	font-family: 'Abel', sans-serif;
 	margin: 0px;
+	border-radius: 0px;
 }
 
 .navbar-brand {
@@ -8,6 +9,7 @@
 	margin: 8px;
 	margin-left: -5px !important;
 	padding: 10px;
+	color: white;
 }
 
 .navbar-btn {
@@ -16,17 +18,47 @@
 }
 
 .jumbotron {
-	text-align: center;
+	font-family: 'Poiret One', cursive;
+	text-align: right;
+	color: white;
 	padding: 55px;
 	margin-bottom: 15px;
+	background: url('/images/Seattle.Center.Night_.Space_.Needle.Fog_.eng-0008.jpg');
+	background-size: cover;
+}
+
+.jumbotron h1 {
+	font-size: 45px;
 }
 
 .thumbnail {
+	font-family: 'Abel', sans-serif;
 	text-align: left;
 	border-radius: 1px;
 	margin-bottom: 15px;
+	border-width: 5px;
 }
 
 .thumbnail .caption {
 	padding: 1px;
+}
+
+.text-muted {
+	margin-bottom: 20px;
+}
+
+li {
+	list-style: none;
+}
+
+h2 {
+	font-family: 'Abel', sans-serif;
+}
+
+h3 {
+	font-family: 'Abel', sans-serif;
+}
+
+h4 {
+	font-family: 'Abel', sans-serif;
 }

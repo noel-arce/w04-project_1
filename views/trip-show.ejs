@@ -13,6 +13,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <!-- Custom -->
   <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
   <script src="/js/app.js"></script>
 </head>
 
@@ -22,78 +24,36 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">
-          Coast-to-Coast
+          C2C
         </a>
       </div>
     </div>
   </nav>
 
-	  <div class='row trip'>
-		  <div class='col-sm-4 col-sm-offset-4'>
-		  	<h5><%= trip.title %></h5>
-		  	<div class="text-muted"><%= trip.city  %></div>
-		  	<%= trip.details %>
-		  	<div class="text-right">
-		  		<button type="button" class="btn btn-xs btn-danger" id='remove-trip' data-id='<%=trip._id %>'>Remove</button>
-		  	</div>
-		  	<form id="new-activity" data-id='<%=trip._id %>'>
-		  		<input class='form-control' type="text" name='title' placeholder='title'>
-		  		<textarea class='form-control' name="desc" rows="5" placeholder='details'></textarea>
-		  		<input class='form-control' type="text" name='location' placeholder='Location'>
-		  		<button class='form-control' type='submit'>Save</button>
-		  	</form>
-		  	<% for (i = 0; i < trip.activities.length; i++) { %>
-		  		<div><%= trip.activities[i].title %></div>
-		  		<div><%= trip.activities[i].desc %></div>
-		  		<div><%= trip.activities[i].location %></div>
-		  		<br>
-		  	<% } %>
+  <div class='row trip'>
+	  <div class='col-sm-4 col-sm-offset-4'>
+	  	<h2><%= trip.title %></h2>
+	  	<div class="text-muted"><h3><%= trip.city  %></h3></div>
+	  	<div><h4><%= trip.details %></h4></div>
+	  	<form id="new-activity" data-id='<%=trip._id %>'>
+	  		<input name='title' class='form-control' type="text" placeholder='Restaurant, Location, Activity...'>
+	  		<br>
+	  		<textarea name="details" class='form-control' rows="2" placeholder='Details...'></textarea>
+	  		<br>
+	  		<button class='form-control' type='submit'>Save</button>
+	  	</form>
+	  	<br>
+	  	<div class="text-right">
+	  		<button type="button" class="btn btn-xs btn-danger" id='remove-trip' data-id='<%=trip._id %>'>Remove</button>
+	  	</div>
+	  	<% for (i = 0; i < trip.activities.length; i++) { %>
+	  		<li><%= trip.activities[i].title %><br>
+	  		<%= trip.activities[i].details %></li><br>
+	  	<% } %>
 		  	<ul class="list-group" id='activity'>
 		  		
 		  	</ul>
-		  </div>
-		</div>
-		<!-- <button type="button" class="btn btn-default" id='edit-trip' data-toggle="modal" data-target="#update-trip-modal">Edit</button> -->
-		  
-
-
-		<!-- <div class="modal fade" id="update-trip-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h4 class="modal-title" id="myModalLabel">Update Trip Details</h4>
-		      </div>
-		      <div class="modal-body">
-		        <form action="" id='new-trip'>
-		          <input type="text" name='city' class='form-control' placeholder='Your Favorite City'>
-		          <br>
-		          <input type="text" name='title' class='form-control' placeholder='Title...'>
-		          <br>
-		          <textarea name="details" class='form-control' id="" rows=10 placeholder='Description...'></textarea>
-		          <button type='submit'>Submit</button>
-		        </form>
-		      </div>
-		    </div>
-		  </div>
-		</div> -->
-		<!-- <form class='trip-item'>
-			<div class="input-group">
-	      <input type="text" class="form-control" id='item' placeholder="Search for...">
-	      <span class="input-group-btn">
-	        <button class="btn btn-default" type="submit">Add</button>
-	      </span>
-	    </div>
-    </form> -->
-    <!-- <div class='row'>
-	    <form class='col-sm-6' class='trip-description'>
-	    	<textarea class='form-control' name='body' rows=15></textarea>
-	    	<br>
-	    	<button class="btn btn-default pull-right" type='button'>Save</button>
-	    </form>
-    </div> -->
-		<!-- <form class='trip-list'>
-			<button class="btn btn-default" type='button'>Save</button>
-		</form> -->
+	  </div>
 	</div>
 
 </body>

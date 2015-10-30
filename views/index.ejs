@@ -13,53 +13,32 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <!-- Custom -->
   <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
   <script src="/js/app.js"></script>
   <!-- <script src="/js/auth.js"></script> -->
 </head>
 
 <body>
   <!-- NAVBAR -->
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">
-          C2C
-        </a>
-      </div>
-      <button class='navbar-btn btn btn-defult pull-right' data-toggle="modal" data-target="#new-trip-modal">New Trip</button>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/signup">Sign Up</a></li>
-        <li><a href="/login">Login</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Logout</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<% include ./_head %>
 
   <!-- JUMBOTRON -->
   <div class='jumbotron'>
     <div class='container'>
-      <h1>Coast-to-Coast</h1>
-      <h3></h3>
+      <h1>COAST-to-COAST</h1>
     </div>
   </div>
 
+  <!-- THUMBNAILS -->
   <% for (var i = trips.length-1; i >= 0; i--) { %>
     <div class="col-sm-3">
       <div class="thumbnail">
         <div class='caption'>
           <a class='trip-button' href='/trips/<%= trips[i]._id %>' >
             <img src="<%= trips[i].imgUrl %>">
-            <div><%= trips[i].city %></div>
-            <div><%= trips[i].title %></div>
+            <div id='city'><h3><%= trips[i].city %></h3></div>
+            <div id='title'><h4><%= trips[i].title %></h4></div>
           </a>
         </div>
       </div>
@@ -75,11 +54,11 @@
         </div>
         <div class="modal-body">
           <form action="" id='new-trip'>
-            <input type="text" name='city' class='form-control' placeholder='Your Favorite City'>
+            <input type="text" name='city' class='form-control' placeholder='City'>
             <br>
             <input type="text" name='title' class='form-control' placeholder='Title...'>
             <br>
-            <textarea name="details" class='form-control' id="" rows=5 placeholder='Description...'></textarea>
+            <textarea name="desc" class='form-control' rows="1" placeholder='Description...'></textarea>
             <br>
             <input type="text" name="imgUrl" class="form-control" placeholder="Image URL">
             <br>
