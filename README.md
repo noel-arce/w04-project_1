@@ -9,8 +9,8 @@ Heroku URL link: https://coast-to-coast.herokuapp.com/
 
 
 Wireframes: located in public/images
-![wireframe1](/images/wireframe1.JPG)
-![wireframe2](/images/wireframe2.JPG)
+![wireframe1](/public/images/wireframe1.JPG)
+![wireframe2](/public/images/wireframe2.JPG)
 
 
 
