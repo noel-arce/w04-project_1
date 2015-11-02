@@ -1,69 +1,83 @@
-// console.log('auth.js working');
-// $(document).ready(function() {
+console.log('auth.js working');
+$(document).ready(function() {
 
-// 	// CREATE NEW USER [x]
-// 	$('#signup-form').submit(function (e) {
-// 		e.preventDefault();
-// 		var user = $(this).serialize();
-// 		//console.log(user);
+	// CREATE NEW USER [x]
+	$('#signup-form').submit(function (e) {
+		e.preventDefault();
+		var data = $(this).serialize();
+		console.log(data);
 
-// 		$.post('/users', user, function (data) {
-			
-// 		})
-// 		.done(function (data) {
-// 			console.log("user created", data);
-// 			window.location.href = "/";
-// 		})
-// 		.fail(function (data) {
-// 			console.log('fail to create');
-// 		});
-// 	});
+		$.ajax({
+			url: '/api/users',
+			type: 'POST',
+			data: data
+		})
+		.done(function(data){
+			console.log("user created", data);
+			$("#sign-up-btn").hide();
+			$("#log-in-btn").hide();
+			$("#log-out-btn").show();
+			$("#sign-up-modal").modal('hide');
+			console.log("after");
+		})
+		.fail(function(data){
+			console.log('fail to create');
+		});
+	});
 
-// 	// LOGIN
-// 	$('#login-form').on('submit', function (e) {
-// 		e.preventDefault();
+	// LOGIN
+	$('#login-form').on('submit', function (e) {
+		e.preventDefault();
 
-// 		var user = $(this).serialize();
-// 		console.log(user);
+		var user = $(this).serialize();
+		console.log(user);
 
-// 		$.post('/userlogin', user, function (data) {
-// 		})
+		// $.post('/userlogin', user, function (data) {
+		// })
 
-// 		.success(function (data) {
-// 			console.log('logged in', data);
-// 			//window.location.href = "/";
-// 		})
-// 		.error(function (data) {
-// 			console.log(data.responseText);
-// 			alert("wrong username or password");
-// 		});
+		// .success(function (data) {
+		// 	console.log('logged in', data);
+		// 	//window.location.href = "/";
+		// })
+		// .error(function (data) {
+		// 	console.log(data.responseText);
+		// 	alert("wrong username or password");
+		// });
 
-// 	});
+	});
 
-// 	// LOGOUT
-// 	$('#logout').on('click', function (e) {
-// 		//e.preventDefault();
+	// LOGOUT
+	$('#log-out-btn').on('click', function (e) {
+		e.preventDefault();
 
-// 		$.get('/logout', function (data) {
-// 			console.log();
-// 		});
-// 	});
+		$.post('/logout', function (data) {
+		})
+		.success(function(data){
+			console.log("log out form submitted to server");
+			$("#sign-up-btn").show();
+			$("#log-in-btn").show();
+			$("#log-out-btn").hide();
+		})
+		.fail(function(data){
+			console.log("failed to log out");
+		});
+	});
 
-// 	function checkAuth() {
-// 		$.get('/current-user', function (data) {
-// 			if (data.user) {
-// 				$('.not-logged-in').hide();
-// 				$('.logged-in').show();
-// 			} else {
-// 				$('.not-logged-in').show();
-// 				$('.logged-in').hide();
-// 			}
-// 		});
-// 	}
+	function checkAuth() {
+		$.get('/current-user', function (data) {
+			if (data.user) {
+				$('.not-logged-in').hide();
+				$('.logged-in').show();
+			} else {
+				$('.not-logged-in').show();
+				$('.logged-in').hide();
+			}
+		});
+	}
 
 // 	checkAuth();
 
-// });
+});
 
 
 

@@ -77,8 +77,6 @@ app.delete('/trips/:id', function (req, res) {
 	});
 });
 
-app.listen(app.listen(process.env.PORT || 3000)
-);
 
 
 
@@ -97,22 +95,21 @@ app.listen(app.listen(process.env.PORT || 3000)
 // });
 
 // CREATE NEW USER - SIGNUP [x]
-// app.post('/users', function (req, res) {
-// 	var user = req.body;
-// 	console.log(user);
-// 		db.User.createSecure(user.email, user.password, function (err, user) {
-// 			req.session.userId = user._id;
-// 			//res.json({user: user, msg: "john is the best"});
-// 			req.session.user = user;
-// 			console.log(user);
-		
-// 		if (err) {
-// 			console.log(err);
-// 		} else {
-// 			res.json(user);
-// 		}
-// 	});
-// });
+app.post('/api/users', function (req, res) {
+	var user = req.body;
+	console.log("new user is: ", req.body);
+		db.User.createSecure(user.email, user.password, function (err, user) {
+			if (err) {
+				console.log("the error with creating a new user is: ", err);
+			}
+			else {
+				req.session.userId = user._id;
+				res.json(user);
+				// req.session.user = user;
+				console.log("the created user is: ", user);
+			}
+		});
+});
 
 //SHOW LOGIN
 // app.get('/login', function (req, res) {
@@ -136,9 +133,15 @@ app.listen(app.listen(process.env.PORT || 3000)
 // });
 
 //LOGOUT
-// app.get('/logout', function (req, res) {
-// 	req.session.userId = null;
-// 	req.session.user = null;
-// 	res.json('/');
-// });
+app.post('/logout', function (req, res) {
+	req.session.userId = null;
+	req.session.user = null;
+	db.Trip.find().exec(function(err, trips) { //finds all trips in database
+  	res.render("index", {trips: trips}); //renders all trips found in database
+	});
+});
+
+app.listen(app.listen(process.env.PORT || 3000)
+);
+
 
