@@ -14,10 +14,7 @@ $(document).ready(function() {
 		})
 		.done(function(data){
 			console.log("user created", data);
-			$("#sign-up-btn").hide();
-			$("#log-in-btn").hide();
-			$("#log-out-btn").show();
-			$("#sign-up-modal").modal('hide');
+			checkAuth();
 			console.log("after");
 		})
 		.fail(function(data){
@@ -28,21 +25,21 @@ $(document).ready(function() {
 	// LOGIN
 	$('#login-form').on('submit', function (e) {
 		e.preventDefault();
-
 		var user = $(this).serialize();
 		console.log(user);
 
-		// $.post('/userlogin', user, function (data) {
-		// })
+		$.post('/userlogin', user, function (data) {
+			checkAuth();
+		})
 
-		// .success(function (data) {
-		// 	console.log('logged in', data);
-		// 	//window.location.href = "/";
-		// })
-		// .error(function (data) {
-		// 	console.log(data.responseText);
-		// 	alert("wrong username or password");
-		// });
+		.success(function (data) {
+			console.log('logged in', data);
+			//window.location.href = "/";
+		})
+		.error(function (data) {
+			console.log(data.responseText);
+			alert("wrong username or password");
+		});
 
 	});
 
@@ -65,17 +62,21 @@ $(document).ready(function() {
 
 	function checkAuth() {
 		$.get('/current-user', function (data) {
-			if (data.user) {
-				$('.not-logged-in').hide();
-				$('.logged-in').show();
+			if (data.user || data.cookie) {
+				$("#sign-up-btn").hide();
+				$("#log-in-btn").hide();
+				$("#log-out-btn").show();
+				$("#sign-up-modal").modal('hide');
+				$('#log-in-modal').modal('hide');
 			} else {
-				$('.not-logged-in').show();
-				$('.logged-in').hide();
+				$("#sign-up-btn").show();
+				$("#log-in-btn").show();
+				$("#log-out-btn").hide();
 			}
 		});
 	}
 
-// 	checkAuth();
+	checkAuth();
 
 });
 

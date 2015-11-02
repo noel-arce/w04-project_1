@@ -7,10 +7,13 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var session = require('express-session');
 var db = require("./models/index");
+var cookieparser = require('cookie-parser');
 
 // MIDDLEWARE
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+
+app.use(cookieparser());
 
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -84,10 +87,9 @@ app.delete('/trips/:id', function (req, res) {
 
 
 
-//CURRENT USER
-// app.get('/current-user', function (req, res) {
-// 	res.json({ user: req.session.user });
-// });
+app.get('/current-user', function (req, res) {
+	res.json({ user: req.session.userId, cookie: req.cookies.userId });
+});
 
 //SHOW SIGNUP [x]
 // app.get('/signup', function (req, res) {
@@ -97,13 +99,16 @@ app.delete('/trips/:id', function (req, res) {
 // CREATE NEW USER - SIGNUP [x]
 app.post('/api/users', function (req, res) {
 	var user = req.body;
+
 	console.log("new user is: ", req.body);
+
 		db.User.createSecure(user.email, user.password, function (err, user) {
 			if (err) {
 				console.log("the error with creating a new user is: ", err);
 			}
 			else {
 				req.session.userId = user._id;
+				res.cookie('userId', user._id);
 				res.json(user);
 				// req.session.user = user;
 				console.log("the created user is: ", user);
@@ -111,31 +116,27 @@ app.post('/api/users', function (req, res) {
 		});
 });
 
-//SHOW LOGIN
-// app.get('/login', function (req, res) {
-// 	res.render('login');
-// });
 
-//USER LOGIN
-// app.post('/userlogin', function (req, res) {
-// 	var user = req.body;
 
-// 	db.User.authenticate(user.email, user.password, function (err, user) {
-// 		if (err) {
-// 			console.log(err);
-// 			res.send(401, err);
-// 		} else {
-// 			req.session.userId = user._id;
-// 			res.session.user = user;
-// 			res.json(user);
-// 		} 
-// 	});
-// });
+app.post('/userlogin', function (req, res) {
+	var user = req.body;
+
+	db.User.authenticate(user.email, user.password, function (err, user) {
+		if (err) {
+			console.log(err);
+			res.send(401, err);
+		} else {
+			req.session.userId = user._id;
+			res.cookie('userId', user._id);
+			res.json(user);
+		} 
+	});
+});
 
 //LOGOUT
 app.post('/logout', function (req, res) {
 	req.session.userId = null;
-	req.session.user = null;
+	res.clearCookie('userId', {path: '/'});
 	db.Trip.find().exec(function(err, trips) { //finds all trips in database
   	res.render("index", {trips: trips}); //renders all trips found in database
 	});
