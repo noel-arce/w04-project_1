@@ -60,5 +60,19 @@ $(document).ready(function(){
     });
   });
 
+  // function checkUser() {
+  //   $.get('/current-user', function (data) {
+  //     if (data.cookie) {
+  //       $('#new-activity').show();
+
+  //     } else {
+  //       $('#new-activity').hide();
+  //       $('#remove-trip').hide();
+  //     }
+  //   });
+  // }
+
+  // checkUser();
+
 });
 
