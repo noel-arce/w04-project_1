@@ -5,29 +5,30 @@
   <meta charset="utf-8" />
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
-  <!-- Bootstrap CSS -->
+  
+  <!-- LINKS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <!-- Bootstrap JS -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <!-- Custom -->
-  <link rel="stylesheet" type="text/css" href="/css/main.css">
   <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
-  <script src="/js/app.js"></script>
+  
+  <!-- SCRIPTS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  
+  <!-- PERSONAL -->
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
   <script src="/js/auth.js"></script>
+  <script src="/js/app.js"></script>
 </head>
 
 <body>
-  <!-- NAVBAR -->
-<% include ./_head %>
+
+  <!-- NAVBAR PARTIAL-->
+  <% include ./_head %>
 
   <!-- JUMBOTRON -->
   <div class='jumbotron'>
-    <div class='container'>
-      <h1>COAST-to-COAST</h1>
-    </div>
+    <h1>COAST to COAST</h1>
   </div>
 
   <!-- THUMBNAILS -->
@@ -45,71 +46,16 @@
     </div>
   <% } %>
 
-  <!-- MODAL CONTENT NEW TRIP-->
-  <div class="modal fade" id="new-trip-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="myModalLabel">Share Your Trip Plan</h4>
-        </div>
-        <div class="modal-body">
-          <form action="" id='new-trip'>
-            <input type="text" name='city' class='form-control' placeholder='City'>
-            <br>
-            <input type="text" name='title' class='form-control' placeholder='Title...'>
-            <br>
-            <textarea name="desc" class='form-control' rows="1" placeholder='Description...'></textarea>
-            <br>
-            <input type="text" name="imgUrl" class="form-control" placeholder="Image URL">
-            <br>
-            <button type='submit' class="btn btn-sm">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL CONTENT SIGN UP-->
-  <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="sign-up">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="sign-up">SIGN UP</h4>
-        </div>
-        <div class="modal-body">
-          <form action="" id='signup-form'>
-            <input name='email' type="text" placeholder='Email'>
-            <br>
-            <input name='password' type="password" placeholder='Password'>
-            <br>
-            <input name='confirm' type="password" placeholder='Confirm Password'>
-            <br>
-            <button type='submit' class="btn btn-sm">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL CONTENT LOG IN-->
-  <div class="modal fade" id="log-in-modal" tabindex="-1" role="dialog" aria-labelledby="log-in">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="log-in">LOG IN</h4>
-        </div>
-        <div class="modal-body">
-          <form action="" id='login-form'>
-            <input name='email' type="text" placeholder='Email'>
-            <br>
-            <input name='password' type="password" placeholder='Password'>
-            <br>
-            <button type='submit' class="btn btn-sm">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,10 @@
-.navbar {
+/***** NAVBAR *****/
+
+.navbar-right {
+	text-align: center;
+}
+
+/*.navbar {
 	font-family: 'Abel', sans-serif;
 	margin: 0px;
 	border-radius: 0px;
@@ -15,22 +21,24 @@
 .navbar-btn {
 	border-radius: 1px;
 	margin-top: 15px;
-}
+}*/
 
 .jumbotron {
 	font-family: 'Poiret One', cursive;
 	color: white;
-	padding: 150px;
-	margin-bottom: 15px;
-	background: url('/images/nVoKFEq.jpg');
+	/*padding: 150px;*/
+	/*margin-bottom: 15px;*/
+	background: url('/images/nVoKFEq.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 	background-size: cover;
-	background-repeat: no-repeat;
 	height: 450px;
 }
 
 .jumbotron h1 {
 	font-size: 70px;
-	text-align: right;
+	text-align: center;
 }
 
 .thumbnail {

@@ -1,29 +1,27 @@
-// CLIENT-SIDE JAVASCRIPT
-// On page load
 $(document).ready(function(){
-  console.log('JS ready to GO!');
+  // console.log("app.js is working");
 
-  //CREATE NEW TRIP [x]
+  //CREATE NEW TRIP
   $('#new-trip').on('submit', function (e) {
     e.preventDefault();
     var trip = $(this).serialize();
-    
-      $.post('/trips', trip)
-        .success(function (data) {
-          console.log(data);
-          window.location.href = "/trips/" + data._id; //redirects to trip page
-        })
-        .error(function (data) {
-        });
+    console.log(trip);
+
+    $.post('/users/' + $(this).data().id + '/trips', trip)
+      .success(function (trip) {
+        console.log(trip);
+        window.location.href = "/trips/" + trip._id; //redirects to trip page
+      })
+      .error(function (data) {
+      });
   });
 
-  //CREATE LIST IN TRIP
+  //CREATE ACTIVITY IN TRIP
   $('#new-activity').on('submit', function (e) {
     e.preventDefault();
-    //console.log('item-saved') - check click handler working;
-      var activity = $(this).serialize();
+    var activity = $(this).serialize();
 
-      $.post('/trips/' + $(this).data().id +'/activities', activity)
+      $.post('/trips/' + $(this).data().id + '/activities', activity)
         .success(function (data) {
           if (data.err) {
 
@@ -39,7 +37,7 @@ $(document).ready(function(){
         });
   });
 
-  //DELETE TRIP [x]
+  //DELETE TRIP
   $('#remove-trip').on('click', function (e) {
     e.preventDefault();
     //console.log('removed');
@@ -59,20 +57,6 @@ $(document).ready(function(){
       }
     });
   });
-
-  // function checkUser() {
-  //   $.get('/current-user', function (data) {
-  //     if (data.cookie) {
-  //       $('#new-activity').show();
-
-  //     } else {
-  //       $('#new-activity').hide();
-  //       $('#remove-trip').hide();
-  //     }
-  //   });
-  // }
-
-  // checkUser();
 
 });
 

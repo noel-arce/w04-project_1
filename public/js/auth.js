@@ -1,11 +1,34 @@
-console.log('auth.js working');
 $(document).ready(function() {
+	// console.log("auth.js is working");
 
-	// CREATE NEW USER [x]
+	// TO SHOW OR HIDE NAV-BTNS
+	function checkAuth() {
+		$.get('/current-user', function (data) {
+			console.log(data);
+			console.log(data.userId);
+			if (data.userId || data.cookieId) {
+				$("#sign-up-btn").hide();
+				$("#log-in-btn").hide();
+				$("#sign-up-modal").modal('hide');
+				$('#log-in-modal').modal('hide');
+				$("#log-out-btn").show();
+				$("#trip-btn").show();
+			} else {
+				$("#sign-up-btn").show();
+				$("#log-in-btn").show();
+				$("#log-out-btn").hide();
+				$("#trip-btn").hide();
+			}
+		});
+	}
+
+	checkAuth();
+
+	// SIGN UP (CREATE NEW USER)
 	$('#signup-form').submit(function (e) {
 		e.preventDefault();
 		var data = $(this).serialize();
-		console.log(data);
+		// console.log(data);
 
 		$.ajax({
 			url: '/api/users',
@@ -15,14 +38,14 @@ $(document).ready(function() {
 		.done(function(data){
 			console.log("user created", data);
 			checkAuth();
-			console.log("after");
+			// console.log("after");
 		})
 		.fail(function(data){
 			console.log('fail to create');
 		});
 	});
 
-	// LOGIN
+	// LOGIN (SAVED USER)
 	$('#login-form').on('submit', function (e) {
 		e.preventDefault();
 		var user = $(this).serialize();
@@ -32,9 +55,9 @@ $(document).ready(function() {
 			checkAuth();
 		})
 
-		.success(function (data) {
-			console.log('logged in', data);
-			//window.location.href = "/";
+		.success(function (user) {
+			console.log('logged in', user._id);
+			// window.location.href = "/";
 		})
 		.error(function (data) {
 			console.log(data.responseText);
@@ -51,32 +74,16 @@ $(document).ready(function() {
 		})
 		.success(function(data){
 			console.log("log out form submitted to server");
+			window.location.href = "/";
 			$("#sign-up-btn").show();
 			$("#log-in-btn").show();
 			$("#log-out-btn").hide();
+			$("#trip-btn").hide();
 		})
 		.fail(function(data){
 			console.log("failed to log out");
 		});
 	});
-
-	function checkAuth() {
-		$.get('/current-user', function (data) {
-			if (data.user || data.cookie) {
-				$("#sign-up-btn").hide();
-				$("#log-in-btn").hide();
-				$("#log-out-btn").show();
-				$("#sign-up-modal").modal('hide');
-				$('#log-in-modal').modal('hide');
-			} else {
-				$("#sign-up-btn").show();
-				$("#log-in-btn").show();
-				$("#log-out-btn").hide();
-			}
-		});
-	}
-
-	checkAuth();
 
 });
 

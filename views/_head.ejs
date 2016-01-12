@@ -1,33 +1,104 @@
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">
-          C2C
-        </a>
-      </div>
-      <button class='navbar-btn btn btn-defult pull-right' data-toggle="modal" data-target="#new-trip-modal">New Trip</button>
-      <button id="sign-up-btn" class='navbar-btn btn btn-defult pull-right' data-toggle="modal" data-target="#sign-up-modal">Sign Up</button>
-      <button id="log-in-btn" class='navbar-btn btn btn-defult pull-right' data-toggle="modal" data-target="#log-in-modal">Log In</button>
-      <button id="log-out-btn" class='navbar-btn btn btn-defult pull-right' style="display: none;">Log out</button>
-    </div>
-  </nav>
-
-
-
-  <!-- NAVBAR BUTTONS FOR USER SIGN UP/LOGIN -->
-
-  <ul class="nav navbar-nav navbar-right">
-    <!-- <li id="sign-up-btn"><a href="/signup">Sign Up</a></li>
-    <li id="log-in-btn"><a href="/login">Login</a></li>
-    <li id="log-out-btn"><a href="/logout">Logout</a></li> -->
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Another action</a></li>
-        <li><a href="#">Something else here</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="/logout" id='logout'>Logout</a></li>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="menu-icon">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </span>
+      </button>
+      <a class="navbar-brand" href="/">
+        C2C
+      </a>
+    </div> <!-- navbar-header -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a id="sign-up-btn" data-toggle="modal" data-target="#sign-up-modal">Sign Up</a></li>
+        <li><a id="log-in-btn" data-toggle="modal" data-target="#log-in-modal">Login</a></li>
+        <li><a id="log-out-btn">Logout</a></li>
+        <li><a id="trip-btn" data-toggle="modal" data-target="#new-trip-modal">New Trip</a></li>
       </ul>
-    </li>
-  </ul>
+    </div> <!-- navbar-collapse -->
+  </div> <!-- container-fluid -->
+</nav>
+
+<!-- MODAL : NEW TRIP-->
+<div class="modal fade" id="new-trip-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Trip Details</h4>
+      </div>
+      <div class="modal-body">
+        <form id="new-trip">
+          <input type="text" name="city" class="form-control" placeholder="City">
+          <br>
+          <input type="text" name="title" class="form-control" placeholder="Title...">
+          <br>
+          <textarea name="desc" class="form-control" rows="2" placeholder="Description..."></textarea>
+          <br>
+          <input type="text" name="imgUrl" class="form-control" placeholder="Image URL">
+          <br>
+          <button type="submit" class="btn btn-sm">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL : SIGN UP-->
+<div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="sign-up">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="sign-up">SIGN UP</h4>
+      </div>
+      <div class="modal-body">
+        <form id="signup-form">
+          <input class="form-control" name="email" type="text" placeholder="Email">
+          <br>
+          <input class="form-control" name="password" type="password" placeholder="Password">
+          <br>
+          <input class="form-control" name="confirm" type="password" placeholder="Confirm Password">
+          <br>
+          <button type="submit" class="btn btn-sm">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL : LOG IN -->
+<div class="modal fade" id="log-in-modal" tabindex="-1" role="dialog" aria-labelledby="log-in">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="log-in">LOG IN</h4>
+      </div>
+      <div class="modal-body">
+        <form id="login-form">
+          <input class="form-control" name="email" type="text" placeholder="Email">
+          <br>
+          <input class="form-control" name="password" type="password" placeholder="Password">
+          <br>
+          <button type="submit" class="btn btn-sm">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

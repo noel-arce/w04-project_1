@@ -40,26 +40,34 @@ app.get('/trips/:id', function (req, res) {
 });
 
 // CREATE TRIP - creates/saves new trip to database from the modal
-app.post('/trips', function (req, res) {
+app.post('/users/:id/trips', function (req, res) {
 	var trip = req.body;
-	//console.log(trip);
-	db.Trip.create(trip, function (err, trip){
-		if (err) {
-			res.send(403, err);
-		} else {
-			res.send(201, trip);
-		}
-	});
+	console.log("trip details received from client: ", trip);
+	var currentUser = req.session.userId;
+	console.log("trip should be pushed into this userId: ", currentUser);
+
+	db.User.findById(currentUser, function (err, user) {
+		console.log("this is the current user: ", user);
+		db.Trip.create(trip, function (err, trip) {
+			if (err) {
+				res.send(403, err);
+			} else {
+				user.trips.push(trip._id);
+				user.save();
+				// console.log("trip details received from client: ", trip);
+				res.status(201).send(trip);
+			}
+		});
+	});	
 });
 
-//CREATE ACTIVITY TO TRIP [x]
+//CREATE ACTIVITY TO TRIP
 app.post('/trips/:id/activities', function (req, res) {
 	var activity = req.body;
-	//console.log(trip);
 	db.Trip.findById(req.params.id, function (err, trip) { //finds trip in db by ID
-		db.Activity.create(activity, function (err, activity){ //creates new activity for that trip and saves to db
+		db.Activity.create(activity, function (err, activity) { //creates new activity for that trip and saves to db
 			if (err) {
-				res.json({err: err});
+				res.json({ err: err });
 			} else {
 				trip.activities.push(activity._id); //pushes activity's ID into referenced activity schema in trip model
 				trip.save(); //saves trip data with newly added activity data
@@ -69,7 +77,7 @@ app.post('/trips/:id/activities', function (req, res) {
 	});
 });
 
-//DELETE TRIP [x]
+//DELETE TRIP
 app.delete('/trips/:id', function (req, res) {
 	db.Trip.remove({_id: req.params.id}, function (err) { //removes trip by ID in database
 		if (err) {
@@ -88,13 +96,8 @@ app.delete('/trips/:id', function (req, res) {
 
 
 app.get('/current-user', function (req, res) {
-	res.json({ user: req.session.userId, cookie: req.cookies.userId });
+	res.json({ userId: req.session.userId, cookieId: req.cookies.userId });
 });
-
-//SHOW SIGNUP [x]
-// app.get('/signup', function (req, res) {
-// 	res.render('signup');
-// });
 
 // CREATE NEW USER - SIGNUP [x]
 app.post('/api/users', function (req, res) {
@@ -120,6 +123,7 @@ app.post('/api/users', function (req, res) {
 
 app.post('/userlogin', function (req, res) {
 	var user = req.body;
+	console.log("logged in user is: ", user);
 
 	db.User.authenticate(user.email, user.password, function (err, user) {
 		if (err) {
@@ -127,8 +131,9 @@ app.post('/userlogin', function (req, res) {
 			res.send(401, err);
 		} else {
 			req.session.userId = user._id;
-			res.cookie('userId', user._id);
-			res.json(user);
+			console.log("session.userId is: ", req.session.userId);
+			res.cookie("userId: ", user._id);
+			res.status(200).json(user);
 		} 
 	});
 });
