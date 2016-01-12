@@ -28,8 +28,8 @@
   <div class="container">
     <div class='row trip'>
   	  <div class='col-sm-6'>
-  	  	<h2><%= trip.title %></h2>
-  	  	<div class="text-muted"><h3><%= trip.city  %></h3></div>
+  	  	<h2 class="tripId" id="<%= trip.creator %>"><%= trip.title %></h2>
+  	  	<div class="text-muted"><h3><%= trip.city %></h3></div>
   	  	<div><h4><%= trip.desc %></h4></div>
   	  	<form id="new-activity" data-id='<%=trip._id %>'>
   	  		<input name='title' class='form-control' type="text" placeholder='Restaurant, Location, Activity...'>

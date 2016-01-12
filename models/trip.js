@@ -6,7 +6,8 @@ var TripSchema = new Schema ({
 	title: { type: String, required: true },
 	desc: String,
 	imgUrl: String,
-	activities: [{type: Schema.Types.ObjectId, ref: 'Activity'}]
+	creator: { type: Schema.Types.ObjectId, ref: 'User' },
+	activities: [{ type: Schema.Types.ObjectId, ref: 'Activity' }]
 });
 
 var Trip = mongoose.model('Trip', TripSchema);

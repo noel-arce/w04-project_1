@@ -35,29 +35,24 @@ app.get('/', function (req, res) {
 app.get('/trips/:id', function (req, res) {
 	// console.log(req);
 	db.Trip.findById(req.params.id).populate('activities').exec(function (err, trip) { //finds trip by ID and populates referenced data in activities
+		console.log(trip);
 		res.render('trip-show', {trip: trip}); //renders page with populated data
 	});
 });
 
 // CREATE TRIP - creates/saves new trip to database from the modal
 app.post('/users/:id/trips', function (req, res) {
-	var trip = req.body;
-	console.log("trip details received from client: ", trip);
 	var currentUser = req.session.userId;
 	console.log("trip should be pushed into this userId: ", currentUser);
+	var trip = { city: req.body.city, title: req.body.title, desc: req.body.desc, imgUrl: req.body.imgUrl, creator: currentUser };
+	console.log("trip details received from client: ", trip);
 
-	db.User.findById(currentUser, function (err, user) {
-		console.log("this is the current user: ", user);
-		db.Trip.create(trip, function (err, trip) {
-			if (err) {
-				res.send(403, err);
-			} else {
-				user.trips.push(trip._id);
-				user.save();
-				// console.log("trip details received from client: ", trip);
-				res.status(201).send(trip);
-			}
-		});
+	db.Trip.create(trip, function (err, trip) {
+		if (err) {
+			res.send(403, err);
+		} else {
+			res.status(201).send(trip);
+		}
 	});	
 });
 

@@ -13,11 +13,21 @@ $(document).ready(function() {
 				$('#log-in-modal').modal('hide');
 				$("#log-out-btn").show();
 				$("#trip-btn").show();
+				$("#new-activity").show();
+				$("#remove-trip").show();
 			} else {
 				$("#sign-up-btn").show();
 				$("#log-in-btn").show();
 				$("#log-out-btn").hide();
 				$("#trip-btn").hide();
+				$("#new-activity").hide();
+				$("#remove-trip").hide();
+			} if (data.userId == $(".tripId").attr("id")) {
+				$("#new-activity").show();
+				$("#remove-trip").show();
+			} else {
+				$("#new-activity").hide();
+				$("#remove-trip").hide();
 			}
 		});
 	}
@@ -57,13 +67,13 @@ $(document).ready(function() {
 
 		.success(function (user) {
 			console.log('logged in', user._id);
+			var currentUser = user._id;
 			// window.location.href = "/";
 		})
 		.error(function (data) {
 			console.log(data.responseText);
 			alert("wrong username or password");
 		});
-
 	});
 
 	// LOGOUT
@@ -86,27 +96,6 @@ $(document).ready(function() {
 	});
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

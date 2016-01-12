@@ -6,7 +6,7 @@ var salt = bcrypt.genSaltSync(10);
 var UserSchema = new Schema ({
 	email: { type: String, required: true	},
 	passwordDigest: { type: String, required: true },
-	trips: [{type: Schema.Types.ObjectId, ref: 'Trip'}]
+	// trips: [{type: Schema.Types.ObjectId, ref: 'Trip'}]
 });
 
 UserSchema.statics.createSecure = function (email, password, callback) {

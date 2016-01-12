@@ -5,7 +5,7 @@ $(document).ready(function(){
   $('#new-trip').on('submit', function (e) {
     e.preventDefault();
     var trip = $(this).serialize();
-    console.log(trip);
+    console.log(trip);  
 
     $.post('/users/' + $(this).data().id + '/trips', trip)
       .success(function (trip) {
