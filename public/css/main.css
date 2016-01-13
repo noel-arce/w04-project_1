@@ -46,7 +46,7 @@
 	text-align: left;
 	border-radius: 1px;
 	margin-bottom: 15px;
-	border-width: 5px;
+	border-width: 3px;
 }
 
 .thumbnail .caption {
@@ -74,10 +74,21 @@ li {
 	font-family: 'Abel', sans-serif;
 }
 
+h2 {
+	font-size: 50px;
+	margin-top: 150px;
+}
+
 h3 {
 	font-family: 'Abel', sans-serif;
+	font-size: 30px;
 }
 
 h4 {
 	font-family: 'Abel', sans-serif;
+	font-size: 20px;
+}
+
+#activity {
+
 }

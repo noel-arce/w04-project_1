@@ -29,22 +29,24 @@
     <div class='row trip'>
   	  <div class='col-sm-6'>
   	  	<h2 class="tripId" id="<%= trip.creator %>"><%= trip.title %></h2>
-  	  	<div class="text-muted"><h3><%= trip.city %></h3></div>
-  	  	<div><h4><%= trip.desc %></h4></div>
+  	  	<div class="text-muted">
+          <h3><%= trip.city %></h3>
+        </div>
+  	  	<div>
+          <h4><%= trip.desc %></h4>
+        </div>
+      </div>
+      <br>
+      <div class="col-sm-6" id="list">
   	  	<form id="new-activity" data-id='<%=trip._id %>'>
   	  		<input name='title' class='form-control' type="text" placeholder='Restaurant, Location, Activity...'>
-  	  		<br>
   	  		<textarea name="details" class='form-control' rows="3" placeholder='Details...'></textarea>
-  	  		<br>
   	  		<button class='form-control' type='submit'>Save</button>
   	  	</form>
         <br>
         <div class="text-left">
           <button type="button" class="btn btn-xs btn-danger" id='remove-trip' data-id='<%=trip._id %>'>Remove</button>
         </div>
-      </div>
-  	  <br>
-      <div class="col-sm-6" id="list">
   	  	<% for (i = 0; i < trip.activities.length; i++) { %>
   	  		<li><h5 id="act-title"><%= trip.activities[i].title %></h5><%= trip.activities[i].details %></li><br>
   	  	<% } %>
