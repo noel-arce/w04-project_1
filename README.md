@@ -12,8 +12,8 @@ Welcome to Coast-to-Coast(C2C).  This app allows for users and visitors to share
 1. Noel was asked to plan a group trip to Chicago, but he has not been back for several years. He is not sure what would be the best spots, tours, or restaurants to go to anymore. He uses Coast to Coast to find what others say are the best parts of Chicago to plan out a fun trip for him to enjoy with his friends to enjoy.
 
 # Wireframes
-![wireframe-1](public/images/wireframe1.JPG)
-![wireframe-2](public/images/wireframe2.JPG)
+![wireframe-1](public/images/wireframe 1.JPG)
+![wireframe-2](public/images/wireframe 2.JPG)
 
 # Heroku
 https://coast-to-coast.herokuapp.com/
